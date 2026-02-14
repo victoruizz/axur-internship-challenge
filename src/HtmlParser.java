@@ -54,14 +54,16 @@ public class HtmlParser {
     }
 
     private boolean isOpeningTag(String line){
-        return line.startsWith("<") && !line.startsWith("</");
+        return line.startsWith("<")
+                && line.endsWith(">")
+                && !line.startsWith("</");
     }
 
     private boolean isClosingTag(String line){
-        return line.startsWith("</");
+        return line.startsWith("</") && line.endsWith(">");
     }
 
     private String extractTagName(String line){
-        return line.replaceAll("[</>]", "");
+        return line.replaceAll("[</>]", "").trim();
     }
 }

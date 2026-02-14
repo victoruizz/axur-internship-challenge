@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class HtmlLoader {
 
@@ -23,7 +24,10 @@ public class HtmlLoader {
         }
 
         StringBuilder content = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(
+                connection.getInputStream(),
+                StandardCharsets.UTF_8
+        ))) {
             String line;
             while ((line = br.readLine()) != null) {
                 content.append(line).append("\n");

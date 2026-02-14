@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class HtmlAnalyzer {
 
     public static void main(String[] args) {
@@ -10,14 +12,14 @@ public class HtmlAnalyzer {
             HtmlLoader loader = new HtmlLoader();
             HtmlParser parser = new HtmlParser();
 
-            String hmtl = loader.fetchHtml(url);
+            String html = loader.fetchHtml(url);
 
-            String result = parser.findDeepestText(hmtl);
+            String result = parser.findDeepestText(html);
 
             System.out.println(result);
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("URL connection error");
         }
-
     }
 }
+
